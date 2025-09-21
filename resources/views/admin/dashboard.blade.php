@@ -87,7 +87,6 @@
 </div>
 
 <script>
-// Admin Dashboard JavaScript - FIXED VERSION
 let tasks = [];
 
 // Load tasks when page loads
@@ -116,7 +115,7 @@ async function loadTasks() {
         
         if (response.ok) {
             const data = await response.json();
-            tasks = data.data || data; // Handle both resource collection and direct array
+            tasks = data.data || data; 
             displayTasks(tasks);
         } else {
             console.error('Error loading tasks:', response.statusText);
@@ -253,7 +252,7 @@ document.getElementById('editTaskForm').addEventListener('submit', async functio
     
     try {
         const response = await fetch(`/tasks/${taskId}`, {
-            method: 'POST', // Using POST with method spoofing
+            method: 'POST',
             body: formData,
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
